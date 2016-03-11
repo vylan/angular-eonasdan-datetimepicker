@@ -27,12 +27,18 @@
               $scope.onClick();
             });
 
-            controller.$render = function() {
-              if (!!controller && !!controller.$viewValue) {
-                var result = controller.$viewValue;
-                $element.data('DateTimePicker').date(result);
+            controller.$render = function () {
+              if (!!controller) {
+                if (controller.$viewValue === undefined) {
+                  controller.$viewValue = null;
+                }
+                else if (!(controller.$viewValue instanceof moment)) {
+                  controller.$viewValue = moment(controller.$viewValue);
+                }
+                $element.data('DateTimePicker').date(controller.$viewValue);
               }
             };
+
 
             $element.datetimepicker($scope.$eval($attrs.options));
           }

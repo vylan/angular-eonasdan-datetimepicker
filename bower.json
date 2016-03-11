@@ -1,6 +1,6 @@
 {
   "name": "angular-eonasdan-datetimepicker",
-  "version"      : "0.2.0",
+  "version"      : "0.2.1",
   "authors"      : [
     "Atais <atais.jr@gmail.com>"
   ],
@@ -29,6 +29,7 @@
   "dependencies" : {
     "angular"                           : "*",
     "eonasdan-bootstrap-datetimepicker" : ">=4.0.0",
+    "moment"                            : "*",
     "jquery"                            : "*"
   }
 }
