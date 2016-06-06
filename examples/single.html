@@ -7,8 +7,7 @@
 
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
     <!-- endinject -->
 </head>
 
@@ -39,6 +38,9 @@
         <br>
         <p><b>Input date:</b> {{vm.date.format() | date: 'yyyy/MM/dd HH:mm'}}</p>
         <button class="btn btn-default" ng-click="vm.getTime()">What's the time?</button>
+        <button class="btn btn-default" ng-click="vm.addTime(1, 'h')">Add +1h</button>
+        <button class="btn btn-default" ng-click="vm.addTime(1, 'd')">Add +1d</button>
+        <button class="btn btn-default" ng-click="vm.addTime(1, 'w')">Add +1w</button>
     </div>
 </div>
 

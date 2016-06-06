@@ -23,6 +23,10 @@
                         });
                     });
 
+                    $scope.$watch('date', function (newValue) {
+                        $element.data('DateTimePicker').date(newValue);
+                    });
+
                     $element.on('dp.change', function () {
                         $timeout(function () {
                             var dtp = $element.data('DateTimePicker');
