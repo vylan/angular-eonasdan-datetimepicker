@@ -43,12 +43,13 @@
                         });
                     });
 
-                    if ($scope.date !== undefined && $scope.date !== null && !($scope.date instanceof moment)) {
-                        $scope.date = moment($scope.date);
-                    }
-
                     $element.datetimepicker($scope.options);
-                    $element.data('DateTimePicker').date($scope.date);
+                    if ($scope.date !== undefined && $scope.date !== null) {
+                        if (!($scope.date instanceof moment)) {
+                            $scope.date = moment($scope.date);
+                        }
+                        $element.data('DateTimePicker').date($scope.date);
+                    }
                 }
             };
         }
