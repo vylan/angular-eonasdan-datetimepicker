@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <div class="input-group" datetimepicker
                          on-change="vm.update(vm.dateFrom, vm.dateTo)"
-                         date="vm.dateFrom" options="vm.optionsFrom">
+                         ng-model="vm.dateFrom" options="vm.optionsFrom">
                         <input type="text" class="form-control"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <div class="input-group" datetimepicker
                          on-change="vm.update(vm.dateFrom, vm.dateTo)"
-                         date="vm.dateTo" options="vm.optionsTo">
+                         ng-model="vm.dateTo" options="vm.optionsTo">
                         <input type="text" class="form-control"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>

@@ -54,6 +54,6 @@ gulp.task('dist', ['lint', 'minify'], function () {
 });
 
 gulp.task('default', function (cb) {
-    runSequence(['bower'], ['html', 'lint'], cb);
-    gulp.watch([app], ['lint']);
+    runSequence(['bower'], ['html', 'lint', 'minify'], cb);
+    gulp.watch([app], ['lint', 'minify']);
 });

@@ -32,13 +32,13 @@ angular.module('myApp', ['ae-datetimepicker']);
 
 ## Parameters
 
-### Minimal setup
+### ng-model
 
-Simply add `datetimepicker` tag and pass the `date` attribute. <br>
-If `date` is `null` or `undefined`, the initial value will not be set!
+Simply add `datetimepicker` tag and pass the `ng-model` attribute. <br>
+If `ng-model` is `null` or `undefined`, the initial value will not be set!
 
 ```html
-<div class="input-group" datetimepicker date="vm.date">
+<div class="input-group" datetimepicker ng-model="vm.date">
     <input type="text" class="form-control"/>
     <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar"></span>
@@ -52,7 +52,7 @@ With `options` attribute you can pass an object containing all the required conf
 All the options available in the original library are supported. Check the list of options on official website: http://eonasdan.github.io/bootstrap-datetimepicker/Options/
 
 ```html
-<div class="input-group" datetimepicker date="vm.date" options="vm.options">
+<div class="input-group" datetimepicker ng-model="vm.date" options="vm.options">
 ```
 
 ```javascript
