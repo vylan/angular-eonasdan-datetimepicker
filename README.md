@@ -77,6 +77,6 @@ The event occurs when you open or close the datetimepicker.
 
 ## Limitations
 
-Currently, form validation works only if you put the directive around `input` element and not thr whole `input-group`.
+Currently, form validation works only if you put the directive around `input` element and not the whole `input-group`.
 
 ## [License](https://github.com/atais/angular-eonasdan-datetimepicker/blob/master/LICENSE)
