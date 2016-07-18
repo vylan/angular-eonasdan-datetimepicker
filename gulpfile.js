@@ -48,6 +48,7 @@ var html = function (html) {
 gulp.task('html', function () {
     html('single.html');
     html('double.html');
+    html('validation.html');
 });
 
 gulp.task('dist', ['lint', 'minify'], function () {

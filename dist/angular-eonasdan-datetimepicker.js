@@ -24,16 +24,22 @@
                     });
 
                     ngModel.$render = function () {
-                        $element.data('DateTimePicker').date(ngModel.$viewValue);
+                        if (!!ngModel.$viewValue) {
+                            $element.data('DateTimePicker').date(ngModel.$viewValue);
+                        } else {
+                            $element.data('DateTimePicker').date(null);
+                        }
                     };
 
                     $element.on('dp.change', function (e) {
                         $timeout(function () {
-                            $scope.$apply(function () {
-                                ngModel.$setViewValue(e.date);
-                            });
-                            if (typeof $scope.onChange === "function") {
-                                $scope.onChange();
+                            if (!!e.date) {
+                                $scope.$apply(function () {
+                                    ngModel.$setViewValue(e.date);
+                                });
+                                if (typeof $scope.onChange === "function") {
+                                    $scope.onChange();
+                                }
                             }
                         });
                     });
@@ -48,7 +54,7 @@
 
                     $element.datetimepicker($scope.options);
                     $timeout(function () {
-                        if (ngModel.$viewValue !== undefined && ngModel.$viewValue !== null) {
+                        if (!!ngModel.$viewValue) {
                             if (!(ngModel.$viewValue instanceof moment)) {
                                 ngModel.$setViewValue(moment($scope.date));
                             }
