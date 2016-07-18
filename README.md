@@ -29,6 +29,7 @@ angular.module('myApp', ['ae-datetimepicker']);
 
 * Simple example, with one datetimepicker: http://plnkr.co/n8L8UZ
 * Example with two, linked datetimepickers: http://plnkr.co/ZSjN8f
+* Validation example: http://plnkr.co/NmFt43
 
 ## Parameters
 
@@ -73,5 +74,9 @@ Detailed description of event: http://eonasdan.github.io/bootstrap-datetimepicke
 
 You can pass a function that will be called every time the datetimepicker is clicked. <br>
 The event occurs when you open or close the datetimepicker.
+
+## Limitations
+
+Currently, form validation works only if you put the directive around `input` element and not thr whole `input-group`.
 
 ## [License](https://github.com/atais/angular-eonasdan-datetimepicker/blob/master/LICENSE)
