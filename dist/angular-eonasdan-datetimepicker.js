@@ -15,9 +15,10 @@
                     onClick: '&?'
                 },
                 link: function ($scope, $element, $attrs, ngModel) {
-
+                    var dpElement = $element.parent().hasClass('input-group') ? $element.parent() : $element;
+                    
                     $scope.$watch('options', function (newValue) {
-                        var dtp = $element.data('DateTimePicker');
+                        var dtp = dpElement.data('DateTimePicker');
                         $.map(newValue, function (value, key) {
                             dtp[key](value);
                         });
@@ -25,13 +26,13 @@
 
                     ngModel.$render = function () {
                         if (!!ngModel.$viewValue) {
-                            $element.data('DateTimePicker').date(ngModel.$viewValue);
+                            dpElement.data('DateTimePicker').date(ngModel.$viewValue);
                         } else {
-                            $element.data('DateTimePicker').date(null);
+                            dpElement.data('DateTimePicker').date(null);
                         }
                     };
 
-                    $element.on('dp.change', function (e) {
+                    dpElement.on('dp.change', function (e) {
                         $timeout(function () {
                             if (!!e.date) {
                                 $scope.$apply(function () {
@@ -44,7 +45,7 @@
                         });
                     });
 
-                    $element.on('click', function () {
+                    dpElement.on('click', function () {
                         $timeout(function () {
                             if (typeof $scope.onClick === "function") {
                                 $scope.onClick();
@@ -52,13 +53,13 @@
                         });
                     });
 
-                    $element.datetimepicker($scope.options);
+                    dpElement.datetimepicker($scope.options);
                     $timeout(function () {
                         if (!!ngModel.$viewValue) {
                             if (!(ngModel.$viewValue instanceof moment)) {
                                 ngModel.$setViewValue(moment($scope.date));
                             }
-                            $element.data('DateTimePicker').date(ngModel.$viewValue);
+                            dpElement.data('DateTimePicker').date(ngModel.$viewValue);
                         }
                     });
                 }

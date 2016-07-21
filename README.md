@@ -30,14 +30,13 @@ angular.module('myApp', ['ae-datetimepicker']);
 * Simple example, with one datetimepicker: http://plnkr.co/n8L8UZ
 * Example with two, linked datetimepickers: http://plnkr.co/ZSjN8f
 * Validation example: http://plnkr.co/NmFt43
+* From/To validation example: http://plnkr.co/ZeKX7z
 
-## Parameters
+## Directive usage
 
-### ng-model
+Simply add `datetimepicker` tag and add the `ng-model` (required) attribute. Currently the `datetimepicker` tag can be added on either `input-group` or the `input`.
 
-Simply add `datetimepicker` tag and pass the `ng-model` attribute. <br>
-If `ng-model` is `null` or `undefined`, the initial value will not be set!
-
+Option #1
 ```html
 <div class="input-group" datetimepicker ng-model="vm.date">
     <input type="text" class="form-control"/>
@@ -46,6 +45,28 @@ If `ng-model` is `null` or `undefined`, the initial value will not be set!
     </span>
 </div>
 ```
+
+Option #2
+```html
+<div class="input-group">
+    <input type="text" class="form-control" datetimepicker ng-model="vm.date"/>
+    <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+</div>
+```
+
+In both cases the directive will work exactly the same. Also triggering the callendar with the icon in `span` will work in both cases.
+
+**However** if you wish to use a custom validation directive, you probably would want to add the directive in `input` element. <br> 
+See the: [From/To validation example](http://plnkr.co/ZeKX7z)  
+
+
+## Parameters
+
+### ng-model
+
+If `ng-model` is `null` or `undefined`, the initial value will not be set!
 
 ### options
 
@@ -66,7 +87,7 @@ vm.options = {
 ### on-change
 
 You can pass a function that will be called every time the value of datetimepicker is changed. <br>
-See: http://plnkr.co/ZSjN8f (Example with two, linked datetimepickers) as an example.
+See: [Example with two, linked datetimepickers](http://plnkr.co/ZSjN8f)
 
 Detailed description of event: http://eonasdan.github.io/bootstrap-datetimepicker/Events/#dpchange
 
@@ -75,8 +96,8 @@ Detailed description of event: http://eonasdan.github.io/bootstrap-datetimepicke
 You can pass a function that will be called every time the datetimepicker is clicked. <br>
 The event occurs when you open or close the datetimepicker.
 
-## Limitations
+## Special thanks
 
-Currently, form validation works only if you put the directive around `input` element and not the whole `input-group`.
+* [Rodrigo Saling](https://github.com/rodrigosaling) for help on making custom validators work
 
 ## [License](https://github.com/atais/angular-eonasdan-datetimepicker/blob/master/LICENSE)
