@@ -34,7 +34,7 @@ angular.module('myApp', ['ae-datetimepicker']);
 
 ## Directive usage
 
-Simply add `datetimepicker` tag and add the `ng-model` (required) attribute. Currently the `datetimepicker` tag can be added on either `input-group` or the `input`.
+Simply add `datetimepicker` tag and add the `ng-model` (required) attribute. Currently the `datetimepicker` tag can be added on either `input-group` or the `input` element.
 
 Option #1
 ```html
@@ -56,10 +56,7 @@ Option #2
 </div>
 ```
 
-In both cases the directive will work exactly the same. Also triggering the callendar with the icon in `span` will work in both cases.
-
-**However** if you wish to use a custom validation directive, you probably would want to add the directive in `input` element. <br> 
-See the: [From/To validation example](http://plnkr.co/ZeKX7z)  
+In both cases the directive will work exactly the same. Also triggering the callendar with the icon in `span` will work in both cases. **However** if you wish to use a custom validation directive, you probably would want to add the directive in `input` element. See the: [From/To validation example](http://plnkr.co/ZeKX7z)  
 
 
 ## Parameters
