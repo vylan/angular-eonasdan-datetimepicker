@@ -23,13 +23,13 @@
 
     function validateBefore() {
         return {
-            restrict: "A",
-            require: "?ngModel",
+            restrict: 'A',
+            require: '?ngModel',
             link: function ($scope, $element, $attrs, ngModel) {
                 ngModel.$validators.validateBefore = function (modelValue) {
                     var compareTo = $scope.$eval($attrs.validateBefore).$viewValue;
                     if (!!modelValue) {
-                        return modelValue.isBefore(compareTo)
+                        return modelValue.isBefore(compareTo);
                     } else {
                         return true;
                     }
@@ -40,13 +40,13 @@
 
     function validateAfter() {
         return {
-            restrict: "A",
-            require: "?ngModel",
+            restrict: 'A',
+            require: '?ngModel',
             link: function ($scope, $element, $attrs, ngModel) {
                 ngModel.$validators.validateAfter = function (modelValue) {
                     var compareTo = $scope.$eval($attrs.validateAfter).$viewValue;
                     if (!!modelValue) {
-                        return modelValue.isAfter(compareTo)
+                        return modelValue.isAfter(compareTo);
                     } else {
                         return true;
                     }

@@ -9,17 +9,17 @@
             vm.dateTo = moment();
 
             vm.update = function (dateFrom, dateTo) {
-                vm.optionsFrom = {format: "DD.MM.YYYY", maxDate: dateTo};
-                vm.optionsTo = {format: "DD.MM.YYYY", minDate: dateFrom};
+                vm.optionsFrom = {format: 'DD.MM.YYYY', maxDate: dateTo};
+                vm.optionsTo = {format: 'DD.MM.YYYY', minDate: dateFrom};
             };
             vm.update(vm.dateFrom, vm.dateTo);
 
             vm.print = function () {
-                console.log('vm.dateTo: ' + vm.dateTo.format("YYYY/MM/DD"));
+                console.log('vm.dateTo: ' + vm.dateTo.format('YYYY/MM/DD'));
                 console.log('vm.optionsTo: ' + angular.toJson(vm.optionsTo));
-                console.log('vm.dateFrom: ' + vm.dateFrom.format("YYYY/MM/DD"));
+                console.log('vm.dateFrom: ' + vm.dateFrom.format('YYYY/MM/DD'));
                 console.log('vm.optionsFrom: ' + angular.toJson(vm.optionsFrom));
-            }
+            };
 
         });
 })();

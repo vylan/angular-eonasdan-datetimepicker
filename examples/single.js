@@ -6,10 +6,10 @@
             var vm = this;
 
             vm.date = moment();
-            vm.options = {format: "YYYY/MM/DD HH:mm"};
+            vm.options = {format: 'YYYY/MM/DD HH:mm', showClear: true};
 
             vm.getTime = function () {
-                alert('Selected time is:' + vm.date.format("YYYY/MM/DD HH:mm"))
+                alert('Selected time is:' + vm.date.format('YYYY/MM/DD HH:mm'));
             };
 
             vm.addTime = function (val, selector) {

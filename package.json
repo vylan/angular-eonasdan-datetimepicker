@@ -23,9 +23,9 @@
   "peerDependencies": {
     "angular": "*",
     "bootstrap": "*",
-    "eonasdan-bootstrap-datetimepicker": ">=4.0.0",
+    "eonasdan-bootstrap-datetimepicker": "~4",
     "moment": "*",
-    "jquery": "*"
+    "jquery": "~2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

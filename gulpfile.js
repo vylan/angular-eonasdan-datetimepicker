@@ -11,6 +11,8 @@ var gulp = require('gulp');
 
 var dist = 'dist/';
 var examples = 'examples/';
+var html = '*.html';
+var js = '*.js';
 var bowerComponents = 'bower_components/';
 
 var app = dist + 'angular-eonasdan-datetimepicker.js';
@@ -18,7 +20,7 @@ var minApp = 'angular-eonasdan-datetimepicker.min.js';
 
 // tasks
 gulp.task('lint', function () {
-    return gulp.src(app)
+    return gulp.src([app, examples + js])
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
@@ -35,7 +37,7 @@ gulp.task('bower', function () {
     return bower({directory: bowerComponents});
 });
 
-var html = function (html) {
+gulp.task('html', function () {
     var target = gulp.src(examples + html);
 
     var bowerFiles = gulp.src(mainBowerFiles({paths: {bowerDirectory: bowerComponents}}), {cwd: examples});
@@ -43,12 +45,6 @@ var html = function (html) {
     return target
         .pipe(inject(bowerFiles, {name: 'bower', addRootSlash: false}))
         .pipe(gulp.dest(examples));
-};
-
-gulp.task('html', function () {
-    html('single.html');
-    html('double.html');
-    html('validation.html');
 });
 
 gulp.task('dist', ['lint', 'minify'], function () {

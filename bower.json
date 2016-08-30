@@ -29,9 +29,9 @@
   "dependencies": {
     "angular": "*",
     "bootstrap": "*",
-    "eonasdan-bootstrap-datetimepicker": ">=4.0.0",
+    "eonasdan-bootstrap-datetimepicker": "~4",
     "moment": "*",
-    "jquery": "*"
+    "jquery": "~2"
   },
   "overrides": {
     "angular": {
