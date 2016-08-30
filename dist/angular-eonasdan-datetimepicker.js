@@ -34,7 +34,7 @@
 
                     dpElement.on('dp.change', function (e) {
                         $timeout(function () {
-                            if (!!e.date) {
+                            if (e.date !== 'undefined') {
                                 $scope.$apply(function () {
                                     ngModel.$setViewValue(e.date);
                                 });

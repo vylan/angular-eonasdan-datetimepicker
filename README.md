@@ -3,8 +3,6 @@
 * A wrapper directive around the [bootstrap-datetimepicker component](http://eonasdan.github.io/bootstrap-datetimepicker/).
 * It is a continuation of [angular-bootstrap-datetimepicker-directive](https://github.com/diosney/angular-bootstrap-datetimepicker-directive).
 
-**Every version brings some breaking changes so please read the manual carefully.**
-
 Having problems using the wrapper? <br>
 Please, post an issue on GitHub and **provide a plunker** with your question.
 
