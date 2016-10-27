@@ -22,7 +22,7 @@
                         $.map(newValue, function (value, key) {
                             dtp[key](value);
                         });
-                    });
+                    }, true);
 
                     ngModel.$render = function () {
                         if (!!ngModel.$viewValue) {

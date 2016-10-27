@@ -8,9 +8,12 @@
             vm.dateFrom = moment().add(-1, 'd');
             vm.dateTo = moment();
 
+            vm.optionsFrom = {format: 'DD.MM.YYYY'};
+            vm.optionsTo = {format: 'DD.MM.YYYY'};
+
             vm.update = function (dateFrom, dateTo) {
-                vm.optionsFrom = {format: 'DD.MM.YYYY', maxDate: dateTo};
-                vm.optionsTo = {format: 'DD.MM.YYYY', minDate: dateFrom};
+                vm.optionsFrom.maxDate = dateTo;
+                vm.optionsTo.minDate = dateFrom;
             };
             vm.update(vm.dateFrom, vm.dateTo);
 
