@@ -6,7 +6,7 @@
             var vm = this;
 
             vm.date = undefined;
-            vm.options = {format: 'YYYY/MM/DD HH:mm'};
+            vm.options = {format: 'YYYY/MM/DD HH:mm', showClear: true};
 
             vm.getTime = function () {
                 if (!!vm.date) {

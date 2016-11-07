@@ -25,25 +25,31 @@
                     }, true);
 
                     ngModel.$render = function () {
-                        if (!!ngModel.$viewValue) {
-                            dpElement.data('DateTimePicker').date(ngModel.$viewValue);
-                        } else {
-                            dpElement.data('DateTimePicker').date(null);
+                        if (!ngModel.$viewValue) {
+                            ngModel.$setViewValue(null);
+                        } else if (!moment.isMoment(ngModel.$viewValue)) {
+                            ngModel.$setViewValue(moment(ngModel.$viewValue));
                         }
+                        dpElement.data('DateTimePicker').date(ngModel.$viewValue);
+                    };
+
+                    var isDateEqual = function (d1, d2) {
+                        return moment.isMoment(d1) && moment.isMoment(d2) && d1.valueOf() === d2.valueOf();
                     };
 
                     dpElement.on('dp.change', function (e) {
-                        $timeout(function () {
-                            if (e.date !== 'undefined') {
-                                $scope.$apply(function () {
-                                    ngModel.$setViewValue(e.date);
-                                });
+                        if (!isDateEqual(e.date, ngModel.$viewValue)) {
+                            var newValue = e.date === false ? null : e.date;
+                            ngModel.$setViewValue(newValue);
+
+                            $timeout(function () {
                                 if (typeof $scope.onChange === 'function') {
                                     $scope.onChange();
                                 }
-                            }
-                        });
+                            });
+                        }
                     });
+
 
                     dpElement.on('click', function () {
                         $timeout(function () {
@@ -54,14 +60,6 @@
                     });
 
                     dpElement.datetimepicker($scope.options);
-                    $timeout(function () {
-                        if (!!ngModel.$viewValue) {
-                            if (!moment.isMoment(ngModel.$viewValue)) {
-                                ngModel.$setViewValue(moment($scope.date));
-                            }
-                            dpElement.data('DateTimePicker').date(ngModel.$viewValue);
-                        }
-                    });
                 }
             };
         }
