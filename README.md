@@ -37,7 +37,7 @@ Simply add `datetimepicker` tag and add the `ng-model` (required) attribute. Cur
 Option #1
 ```html
 <div class="input-group" datetimepicker ng-model="vm.date">
-    <input type="text" class="form-control"/>
+    <input class="form-control"/>
     <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar"></span>
     </span>
@@ -47,7 +47,7 @@ Option #1
 Option #2
 ```html
 <div class="input-group">
-    <input type="text" class="form-control" datetimepicker ng-model="vm.date"/>
+    <input class="form-control" datetimepicker ng-model="vm.date"/>
     <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar"></span>
     </span>

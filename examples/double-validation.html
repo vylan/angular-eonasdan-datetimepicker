@@ -27,7 +27,7 @@
                     <div class="form-group" ng-class="{ 'has-error': dates_form.dateFrom.$invalid }">
                         <label for="dateFrom">From</label>
                         <div class="input-group">
-                            <input type="text" name="dateFrom" id="dateFrom" class="form-control"
+                            <input name="dateFrom" id="dateFrom" class="form-control"
                                    datetimepicker ng-model="vm.dateFrom" options="vm.options"
                                    validate-before="dates_form.dateTo">
                             <span class="input-group-addon">
@@ -40,7 +40,7 @@
                     <div class="form-group" ng-class="{ 'has-error': dates_form.dateTo.$invalid }">
                         <label for="dateTo">To</label>
                         <div class="input-group">
-                            <input type="text" name="dateTo" id="dateTo" class="form-control"
+                            <input name="dateTo" id="dateTo" class="form-control"
                                    datetimepicker ng-model="vm.dateTo" options="vm.options"
                                    validate-after="dates_form.dateFrom">
                             <span class="input-group-addon">
