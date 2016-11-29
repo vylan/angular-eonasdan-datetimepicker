@@ -1,5 +1,6 @@
 # angular-eonasdan-datetimepicker
 
+* **Angular 2 version!** [ng2-eonasdan-datetimepicker](https://github.com/atais/ng2-eonasdan-datetimepicker)
 * A wrapper directive around the [bootstrap-datetimepicker component](http://eonasdan.github.io/bootstrap-datetimepicker/).
 * It is a continuation of [angular-bootstrap-datetimepicker-directive](https://github.com/diosney/angular-bootstrap-datetimepicker-directive).
 
