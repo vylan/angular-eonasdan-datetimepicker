@@ -4,15 +4,11 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var ngAnnotate = require('gulp-ng-annotate');
 var rename = require("gulp-rename");
-var runSequence = require('run-sequence');
 var uglify = require('gulp-uglify');
-var webserver = require('gulp-webserver');
-var exit = require('gulp-exit');
 var gulpProtractorAngular = require('gulp-angular-protractor');
 
 var dist = 'dist/';
 var examples = 'examples/';
-var html = '*.html';
 var js = '*.js';
 
 var app = dist + 'angular-eonasdan-datetimepicker.js';
@@ -37,19 +33,11 @@ gulp.task('minify', function () {
 gulp.task('dist', ['lint', 'minify'], function () {
 });
 
-gulp.task('default', function (cb) {
-    runSequence(['lint', 'minify'], cb);
+gulp.task('dev', ['lint', 'minify'], function () {
     gulp.watch([app], ['lint', 'minify']);
 });
 
 // testing
-gulp.task('webserver', function() {
-    gulp.src('./')
-        .pipe(webserver({
-            directoryListing: true
-        }));
-});
-
 gulp.task('protractor', ['dist'], function (callback) {
     gulp
         .src('tests/*.js')
@@ -68,13 +56,4 @@ gulp.task('protractor', ['dist'], function (callback) {
         .on('end', callback);
 });
 
-gulp.task('test', function (cb) {
-    runSequence(
-        'default',
-        'webserver', // how can I get this task's stream so I can call 'kill' on it?
-        'protractor',
-        function () {
-            gulp.src("").pipe(exit());
-            cb();
-        })
-});
+
