@@ -2,20 +2,19 @@
     'use strict';
 
     angular.module('plunker', ['ae-datetimepicker'])
-        .controller('controller', function () {
+        .controller('controller', ['$timeout', function ($timeout) {
             var vm = this;
 
-            vm.dateFrom = moment().add(-1, 'd');
-            vm.dateTo = moment();
+            vm.dateFrom = moment('2015-11-18T00:00Z');
+            vm.dateTo = moment('2015-11-20T00:00Z');
 
             vm.optionsFrom = {format: 'DD.MM.YYYY'};
             vm.optionsTo = {format: 'DD.MM.YYYY'};
 
-            vm.update = function (dateFrom, dateTo) {
-                vm.optionsFrom.maxDate = dateTo;
-                vm.optionsTo.minDate = dateFrom;
-            };
-            vm.update(vm.dateFrom, vm.dateTo);
+            $timeout(function () {
+                vm.optionsTo.minDate = vm.dateFrom;
+                vm.optionsFrom.maxDate = vm.dateTo;
+            });
 
             vm.print = function () {
                 console.log('vm.dateTo: ' + vm.dateTo.format('YYYY/MM/DD'));
@@ -24,5 +23,5 @@
                 console.log('vm.optionsFrom: ' + angular.toJson(vm.optionsFrom));
             };
 
-        });
+        }]);
 })();

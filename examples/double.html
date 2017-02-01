@@ -25,7 +25,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <div class="input-group" datetimepicker
-                         on-change="vm.update(vm.dateFrom, vm.dateTo)"
+                         on-change="vm.optionsTo.minDate = vm.dateFrom"
                          ng-model="vm.dateFrom" options="vm.optionsFrom">
                         <input class="form-control"/>
                         <span class="input-group-addon">
@@ -40,7 +40,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <div class="input-group" datetimepicker
-                         on-change="vm.update(vm.dateFrom, vm.dateTo)"
+                         on-change="vm.optionsFrom.maxDate = vm.dateTo"
                          ng-model="vm.dateTo" options="vm.optionsTo">
                         <input class="form-control"/>
                         <span class="input-group-addon">
