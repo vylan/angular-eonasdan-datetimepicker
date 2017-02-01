@@ -32,33 +32,5 @@
     "eonasdan-bootstrap-datetimepicker": "~4",
     "moment": "*",
     "jquery": "~2"
-  },
-  "overrides": {
-    "angular": {
-      "dependencies": {
-        "jquery": "*"
-      }
-    },
-    "moment": {
-      "dependencies": {
-        "jquery": "*"
-      }
-    },
-    "eonasdan-bootstrap-datetimepicker": {
-      "dependencies": {
-        "bootstrap": "*",
-        "jquery": "*",
-        "moment": "*"
-      }
-    },
-    "bootstrap": {
-      "main": [
-        "dist/js/bootstrap.js",
-        "dist/css/bootstrap.min.css"
-      ],
-      "dependencies": {
-        "jquery": "*"
-      }
-    }
   }
 }
