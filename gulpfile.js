@@ -7,6 +7,8 @@ var rename = require("gulp-rename");
 var runSequence = require('run-sequence');
 var uglify = require('gulp-uglify');
 var webserver = require('gulp-webserver');
+var exit = require('gulp-exit');
+var gulpProtractorAngular = require('gulp-angular-protractor');
 
 var dist = 'dist/';
 var examples = 'examples/';
@@ -46,4 +48,33 @@ gulp.task('webserver', function() {
         .pipe(webserver({
             directoryListing: true
         }));
+});
+
+gulp.task('protractor', ['dist'], function (callback) {
+    gulp
+        .src('tests/*.js')
+        .pipe(gulpProtractorAngular({
+            'configFile': 'protractor.conf.js',
+            'debug': false,
+            'autoStartStopServer': true,
+            'verbose': false,
+            'webDriverUpdate': {
+                'browsers': ['ie', 'chrome']
+            }
+        }))
+        .on('error', function (e) {
+            console.log(e);
+        })
+        .on('end', callback);
+});
+
+gulp.task('test', function (cb) {
+    runSequence(
+        'default',
+        'webserver', // how can I get this task's stream so I can call 'kill' on it?
+        'protractor',
+        function () {
+            gulp.src("").pipe(exit());
+            cb();
+        })
 });
