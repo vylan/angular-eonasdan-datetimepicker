@@ -38,9 +38,8 @@ gulp.task('dev', ['lint', 'minify'], function () {
 });
 
 // testing
-gulp.task('protractor', ['dist'], function (callback) {
-    gulp
-        .src('tests/*.js')
+gulp.task('protractor', ['dist'], function () {
+    return gulp.src('tests/*.js')
         .pipe(gulpProtractorAngular({
             'configFile': 'protractor.conf.js',
             'debug': false,
@@ -49,11 +48,7 @@ gulp.task('protractor', ['dist'], function (callback) {
             'webDriverUpdate': {
                 'browsers': ['ie', 'chrome']
             }
-        }))
-        .on('error', function (e) {
-            console.log(e);
-        })
-        .on('end', callback);
+        }));
 });
 
 
