@@ -15,10 +15,17 @@ var app = dist + 'angular-eonasdan-datetimepicker.js';
 var minApp = 'angular-eonasdan-datetimepicker.min.js';
 
 // tasks
-gulp.task('lint', function () {
+gulp.task('lint-dev', function () {
     return gulp.src([app, examples + js])
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
+});
+
+gulp.task('lint-dist', function () {
+    return gulp.src([app, examples + js])
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('minify', function () {
@@ -30,10 +37,10 @@ gulp.task('minify', function () {
 });
 
 // main tasks
-gulp.task('dist', ['lint', 'minify'], function () {
+gulp.task('dist', ['lint-dist', 'minify'], function () {
 });
 
-gulp.task('dev', ['lint', 'minify'], function () {
+gulp.task('dev', ['lint-dev', 'minify'], function () {
     gulp.watch([app], ['lint', 'minify']);
 });
 
