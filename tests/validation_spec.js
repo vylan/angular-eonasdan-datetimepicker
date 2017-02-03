@@ -4,19 +4,25 @@ describe('validation datetimepicker test page', function () {
 
     var dtFormat = 'YYYY/MM/DD HH:mm';
 
-    beforeEach(function () {
+    beforeAll(function () {
         browser.get('http://localhost:8000/examples/validation.html');
         browser.waitForAngular();
     });
 
-    it('should fail empty', function () {
+    it('should be pristine at the beginning', function () {
+        var input = element(by.tagName('input'));
+        expect(input.getAttribute('class')).toContain('ng-pristine');
+        expect(input.getAttribute('class')).not.toContain('ng-dirty');
+    });
+
+    it('should be invalid when empty', function () {
         var input = element(by.tagName('input'));
         expect(input.getAttribute('value')).toBe('');
         expect(input.getAttribute('class')).toContain('ng-invalid');
         expect(input.getAttribute('class')).toContain('ng-invalid-required');
     });
 
-    it('should be ok when filled', function () {
+    it('should be valid when filled', function () {
         var opener = 'input-group-addon';
         element(by.className(opener)).click().click();
 
@@ -24,17 +30,29 @@ describe('validation datetimepicker test page', function () {
         expect(input.getAttribute('value')).toBe(moment().format(dtFormat));
         expect(input.getAttribute('class')).not.toContain('ng-invalid');
         expect(input.getAttribute('class')).not.toContain('ng-invalid-required');
+        expect(input.getAttribute('class')).toContain('ng-valid');
+        expect(input.getAttribute('class')).toContain('ng-valid-required');
     });
 
-    it('should failed when cleared', function () {
-        var opener = 'input-group-addon';
-        element(by.className(opener)).click().click();
+    it('and it should no longer be pristine', function () {
+        var input = element(by.tagName('input'));
+        expect(input.getAttribute('class')).not.toContain('ng-pristine');
+        expect(input.getAttribute('class')).toContain('ng-dirty');
+    });
+
+    it('should be invalid again when cleared', function () {
         element(by.buttonText('Clear the time')).click();
 
         var input = element(by.tagName('input'));
         expect(input.getAttribute('value')).toBe('');
         expect(input.getAttribute('class')).toContain('ng-invalid');
         expect(input.getAttribute('class')).toContain('ng-invalid-required');
+    });
+
+    it('and it should remain dirty', function () {
+        var input = element(by.tagName('input'));
+        expect(input.getAttribute('class')).not.toContain('ng-pristine');
+        expect(input.getAttribute('class')).toContain('ng-dirty');
     });
 
 });
