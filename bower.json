@@ -29,7 +29,7 @@
   "dependencies": {
     "angular": "*",
     "bootstrap": "*",
-    "eonasdan-bootstrap-datetimepicker": "~4",
+    "eonasdan-bootstrap-datetimepicker": "https://github.com/vylan/bootstrap-datetimepicker.git#~4.17.48",
     "moment": "*",
     "jquery": "~2"
   }
