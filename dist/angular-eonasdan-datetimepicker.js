@@ -12,11 +12,11 @@
                 scope: {
                     options: '=?',
                     onChange: '&?',
-                    onClick: '&?'
+                    onClick: '&?',
+                    outSideClick: '=outSideClick' // 监听外部点击事件，当点击时outSideClick的值会变化。
                 },
                 link: function ($scope, $element, $attrs, ngModel) {
                     var dpElement = $element.parent().hasClass('input-group') ? $element.parent() : $element;
-
                     $scope.$watch('options', function (newValue) {
                         var dtp = dpElement.data('DateTimePicker');
                         $.map(newValue, function (value, key) {
@@ -44,7 +44,7 @@
 
                     dpElement.on('dp.change', function (e) {
                         if (!isDateEqual(e.date, ngModel.$viewValue)) {
-                            var newValue = e.date === false ? null : e.date;
+                            var newValue = e.date === false ? null : new Date(e.date);
                             ngModel.$setViewValue(newValue);
 
                             $timeout(function () {
@@ -64,7 +64,12 @@
                         });
                     });
 
-                    dpElement.datetimepicker($scope.options);
+                    $scope.$watch('outSideClick',function(){
+                        // 当外部点击事件发生时，隐藏选择框
+                        dpElement.data('DateTimePicker').hide();
+                    })
+
+                    var dp = dpElement.datetimepicker($scope.options);                    
                 }
             };
         }
