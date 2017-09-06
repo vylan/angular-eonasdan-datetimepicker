@@ -17,6 +17,8 @@
                 },
                 link: function ($scope, $element, $attrs, ngModel) {
                     var dpElement = $element.parent().hasClass('input-group') ? $element.parent() : $element;
+                    // 记录首次载入，首次载入并不立即设置值
+                    var fistLoad = true;
                     $scope.$watch('options', function (newValue) {
                         var dtp = dpElement.data('DateTimePicker');
                         $.map(newValue, function (value, key) {
@@ -43,8 +45,13 @@
                     };
 
                     dpElement.on('dp.change', function (e) {
+                        if(fistLoad){
+                            // 首次载入并不赋值
+                            fistLoad = false;
+                            return;
+                        }
                         if (!isDateEqual(e.date, ngModel.$viewValue)) {
-                            var newValue = e.date === false ? null : new Date(e.date);
+                            var newValue = e.date === false ? null : e.date;
                             ngModel.$setViewValue(newValue);
 
                             $timeout(function () {
@@ -75,3 +82,4 @@
         }
     ]);
 })();
+
